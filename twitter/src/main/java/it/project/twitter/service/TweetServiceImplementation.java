@@ -1,5 +1,5 @@
 package it.project.twitter.service;
 
-public class TweetServiceImplementation {
+public class TweetServiceImplementation implements TweetService {
 
 }
