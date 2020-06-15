@@ -1,5 +1,7 @@
 package it.project.twitter.db_connection;
 
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,9 +17,7 @@ import org.json.simple.JSONValue;
 
 public class DbClass {
 	public static JSONArray JSONdownload() {
-
-		
-		String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/user/1.1/statuses/user_timeline.json?count=100";
+        String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/user/1.1/statuses/user_timeline.json?count=100";
 		String data = "";
 		String line = "";
 		try {
@@ -55,6 +55,8 @@ public class DbClass {
 		
 		return json_tweet;
 	}
+	
+
 	
 	
 }
