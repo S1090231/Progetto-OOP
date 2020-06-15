@@ -3,7 +3,7 @@ package it.project.twitter.model;
 import java.util.ArrayList;
 
 public class Tweet {
-     private String id = "";
+     private long id ;
      private String idAuthor = "";
      private String dataCreation = "";
      private String lang = "";
@@ -11,10 +11,10 @@ public class Tweet {
      private String text = "";
      private ArrayList<String> userMentions = new ArrayList<String>();
      
-	public String getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(String new_id) {
+	public void setId(long new_id) {
 		this.id = new_id;
 	}
 	public String getIdAuthor() {
