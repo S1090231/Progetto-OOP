@@ -6,11 +6,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-
+import org.springframework.stereotype.Service;
 
 import it.project.twitter.model.Metadata;
 import it.project.twitter.model.Tweet;
-
+@Service
 public class TweetServiceImplementation implements TweetService {
 	
 	private static Map<Long,Tweet> alltweets = new HashMap<>();
