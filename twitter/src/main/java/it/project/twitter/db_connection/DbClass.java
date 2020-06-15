@@ -8,14 +8,18 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONValue;
+
+
 
 public class DbClass {
 	public static JSONArray JSONdownload() {
 
+		
+		String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/user/1.1/statuses/user_timeline.json?count=100";
 		String data = "";
 		String line = "";
-		String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/user/1.1/statuses/user_timeline.json?count=100";
-
 		try {
 			
 			URLConnection openConnection = new URL(url).openConnection();
@@ -41,15 +45,15 @@ public class DbClass {
 			e.printStackTrace();	
 		}	
 		
-		JSONArray json = null;
+		JSONArray json_tweet = null;
 		try {
-			 json = (JSONArray) JSONValue.parse(data);
-			 return json;
-		}catch(Exception e) {
+			json_tweet = (JSONArray) JSONValue.parse(data);
+			 return json_tweet;
+		}catch(Exception e ) {
 			e.printStackTrace();	
 		}
 		
-		return json;
+		return json_tweet;
 	}
 	
 	
