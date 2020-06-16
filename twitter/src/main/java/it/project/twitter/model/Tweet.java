@@ -11,52 +11,89 @@ public class Tweet {
      private String text = "";
      private ArrayList<String> userMentions = new ArrayList<String>();
      
+
+	
 	public long getId() {
 		return id;
 	}
-	public void setId(long new_id) {
-		this.id = new_id;
+
+
+
+	public void setId(long id) {
+		this.id = id;
 	}
+
+
+
 	public String getIdAuthor() {
 		return idAuthor;
 	}
-	public void setIdAuthor(String new_idAuthor) {
-		this.idAuthor = new_idAuthor;
+
+
+
+	public void setIdAuthor(String idAuthor) {
+		this.idAuthor = idAuthor;
 	}
+
+
+
 	public String getDataCreation() {
 		return dataCreation;
 	}
+
+
+
 	public void setDataCreation(String dataCreation) {
 		this.dataCreation = dataCreation;
 	}
+
+
+
 	public String getLang() {
 		return lang;
 	}
-	public void setLang(String new_lang) {
-		this.lang = new_lang;
+
+
+
+	public void setLang(String lang) {
+		this.lang = lang;
 	}
+
+
+
 	public String getSource() {
 		return source;
 	}
-	public void setSource(String new_source) {
-		this.source = new_source;
+
+
+
+	public void setSource(String source) {
+		this.source = source;
 	}
+
+
+
 	public String getText() {
 		return text;
 	}
-	public void setText(String new_text) {
-		this.text = new_text;
+
+
+
+	public void setText(String text) {
+		this.text = text;
 	}
+
+
+
 	public ArrayList<String> getUserMentions() {
 		return userMentions;
 	}
-	
-	public void setUserMentions(String u) {
-		{
-			if(!(userMentions.contains(u)))
-				   userMentions.add(u);
-		}
+
+
+
+	public void setUserMentions(ArrayList<String> userMentions) {
+		this.userMentions = userMentions;
 	}
-     
+
      
 }
