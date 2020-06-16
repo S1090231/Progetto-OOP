@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.project.twitter.exception.FilterIllegalArgumentException;
+import it.project.twitter.exception.FilterNotFoundException;
+import it.project.twitter.exception.InternalGeneralException;
+import it.project.twitter.service.RecognizeFilter;
 import it.project.twitter.service.TweetService;
 
 @RestController
@@ -28,8 +32,8 @@ public class ControllerClass {
 		}
 	
 	@RequestMapping(value="/tweet", method = RequestMethod.POST)
-	public ResponseEntity<Object> getFilteredTweets(@RequestBody Object JsonFilter) {
-		return new ResponseEntity<>();
+	public ResponseEntity<Object> getFilteredTweets(@RequestBody Object JsonFilter) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException {
+		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(JsonFilter), HttpStatus.CREATED);
 		}
 	
 	
