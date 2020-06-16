@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Tweet {
      private long id ;
      private String idAuthor = "";
-     private String dataCreation = "";
+     private String dataCreation;
      private String lang = "";
      private String source = "";
      private String text = "";
@@ -26,8 +26,8 @@ public class Tweet {
 	public String getDataCreation() {
 		return dataCreation;
 	}
-	public void setDataCreation(String new_dataCreation) {
-		this.dataCreation = new_dataCreation;
+	public void setDataCreation(String dataCreation) {
+		this.dataCreation = dataCreation;
 	}
 	public String getLang() {
 		return lang;

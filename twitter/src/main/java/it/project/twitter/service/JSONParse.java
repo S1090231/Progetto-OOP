@@ -18,13 +18,11 @@ public class JSONParse {
 				Tweet tweet = new Tweet();
 				
 				JSONObject tweetObject = (JSONObject) timeline.get(i);
-				
-
 				tweet.setDataCreation((String) tweetObject.get("dataCreation"));
 				tweet.setId((long) tweetObject.get("id"));
 				tweet.setText((String) tweetObject.get("text"));
 				tweet.setLang((String) tweetObject.get("lang"));
-
+                
 				
 				ListaTweets.add(tweet);
 			}
