@@ -10,11 +10,13 @@ public class UserMentionsStats {
         
 	   ArrayList<Tweet> dataset = JSONParse.parse();
 		int c=0;
-		int numUserMentions[] = new int[100];
+		int numUserMention[] = new int[100];
 		for(int i=0; i<dataset.size();i++) {
-			    c=dataset.get(i).getUserMentions().size();
-				numUserMentions[i]=c;
+			for(int j=0; j<dataset.get(i).getEntity().size();j++) {
+				c=dataset.get(i).getEntity().get(j).getMentions().size();
+				numUserMention[i]=c;
+			}
 		}		
-		return numUserMentions;
+		return numUserMention;
    }
- }
+}
