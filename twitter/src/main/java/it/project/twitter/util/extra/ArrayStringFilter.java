@@ -7,11 +7,7 @@ public class ArrayStringFilter {
 	protected ArrayList<String> param = new ArrayList<String>();
 
 	
-	/** Costruttore 
-	 * @param parameters deve essere un ArrayList String.
-	 * @return 
-	 * @throws IllegalArgumentException il valore inserito non è del tipo richiesto
-	*/
+
 	public void FilterArrayString(Object params) {
 		
 		if(params instanceof ArrayList<?>) {
@@ -31,10 +27,7 @@ public class ArrayStringFilter {
 	}
 	
 	
-	/** Set 
-	 * @param parameters deve essere un ArrayList di stringhe
-	 * @throws IllegalArgumentException il valore inserito non è del tipo richiesto 
-	*/
+	
 	public void SetFilterParameters(Object params) {
 		
 		

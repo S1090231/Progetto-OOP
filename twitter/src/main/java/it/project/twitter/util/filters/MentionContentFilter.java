@@ -3,10 +3,10 @@ package it.project.twitter.util.filters;
 import it.project.twitter.model.Tweet;
 import it.project.twitter.util.extra.ArrayStringFilter;
 import it.project.twitter.util.extra.Filter;
-public class MentionsContentFilter extends ArrayStringFilter implements Filter{
+public class MentionContentFilter extends ArrayStringFilter implements Filter{
 	
 	
-	public MentionsContentFilter(Object params) {
+	public MentionContentFilter(Object params) {
 		super();
 	}
 
