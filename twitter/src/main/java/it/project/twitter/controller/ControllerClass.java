@@ -1,6 +1,5 @@
 package it.project.twitter.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,31 +13,37 @@ import it.project.twitter.exception.FilterNotFoundException;
 import it.project.twitter.exception.InternalGeneralException;
 import it.project.twitter.service.RecognizeFilter;
 import it.project.twitter.service.TweetService;
+import it.project.twitter.util.statistics.UserMentionsStats;
 
 @RestController
 public class ControllerClass {
-	
+
 	@Autowired
 	private TweetService tweetservice;
-	
-	@RequestMapping(value="/metadata", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/metadata", method = RequestMethod.GET)
 	public ResponseEntity<Object> getMetadatas() {
 		return new ResponseEntity<>(tweetservice.getMetada(), HttpStatus.OK);
 	}
-	
-	@RequestMapping(value="/tweet", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/tweet", method = RequestMethod.GET)
 	public ResponseEntity<Object> getTweets() {
 		return new ResponseEntity<>(tweetservice.getTweet(), HttpStatus.OK);
-		}
-	
-	@RequestMapping(value="/tweet", method = RequestMethod.POST)
-	public ResponseEntity<Object> getFilteredTweets(@RequestBody Object JsonFilter) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException {
-		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(JsonFilter), HttpStatus.CREATED);
-		}
-	
-	
-	
-	
-	
+	}
 
+	@RequestMapping(value = "/tweet", method = RequestMethod.POST)
+	public ResponseEntity<Object> getFilteredTweets(@RequestBody Object JsonFilter)
+			throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException {
+		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(JsonFilter), HttpStatus.CREATED);
+	}
+
+	@RequestMapping(value = "/mentions", method = RequestMethod.GET)
+	public ResponseEntity<Object> getNumMentions()
+			throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException {
+		int[] numMentions;
+		UserMentionsStats stats = new UserMentionsStats();
+		numMentions = stats.countUserMentions();
+		return new ResponseEntity<>(numMentions, HttpStatus.OK);
+
+	}
 }
