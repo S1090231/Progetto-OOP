@@ -10,8 +10,8 @@ public class Entity{
 		return mentions;
 	}
 
-	public void setMentions(ArrayList<UserMention> mentions) {
-		this.mentions = mentions;
+	public void setMentions(UserMention new_mention) {
+		mentions.add(new_mention);
 	}
 }
 	

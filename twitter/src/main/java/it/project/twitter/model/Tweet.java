@@ -86,7 +86,7 @@ public class Tweet {
 
 
 	public ArrayList<Entity> getEntity() {
-		return entity;
+		return this.entity;
 	}
 
 

@@ -49,8 +49,7 @@ public class RecognizeFilter {
 		for(Map.Entry<String, Object> entry: result.entrySet()) {
 			String operator= entry.getKey();
 			Object value=entry.getValue();
-		    // Se operatore è Type allora guarda se il valore è 'and' o 'or'
-		    // lancia il metodo runfilter corrispondente
+		 
 			if(operator.equals("type") || operator.equals("Type")) {
 				if(operator.equals("type")) {
 
