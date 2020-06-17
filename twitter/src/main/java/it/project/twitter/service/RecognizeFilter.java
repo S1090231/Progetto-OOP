@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import it.project.twitter.exception.FilterIllegalArgumentException;
 import it.project.twitter.exception.FilterNotFoundException;
 import it.project.twitter.exception.InternalGeneralException;
+import it.project.twitter.util.extra.Filter;
 import it.project.twitter.model.Tweet;
 
 public class RecognizeFilter {
@@ -35,15 +36,41 @@ public class RecognizeFilter {
 			previousArray.addAll(filteredArray);
 		}
 		return filteredArray;
-				
-				
-}
+	 }
 
 	private static ArrayList<Tweet> jsonParserOperator(String column, Object filterParam,
-			ArrayList<Tweet> previousArray) {
+			ArrayList<Tweet> previousArray) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException {
 		
-		return null;
-	}
+		String type="";
+		Filter filter;
+		ArrayList<Tweet> filteredArray= new ArrayList <Tweet>();
+		HashMap<String, Object> result= new ObjectMapper().convertValue(filterParam,HashMap.class);
+		
+		for(Map.Entry<String, Object> entry: result.entrySet()) {
+			String operator= entry.getKey();
+			Object value=entry.getValue();
+		    // Se operatore è Type allora guarda se il valore è 'and' o 'or'
+		    // lancia il metodo runfilter corrispondente
+			if(operator.equals("type") || operator.equals("Type")) {
+				if(operator.equals("type")) {
+
+					throw new FilterIllegalArgumentException(" Type must be 'T' caps ");
+
+				}
+				type=(String) value;
+				if(!(value.equals("and"))&&!(value.equals("or"))) {
+					throw new FilterIllegalArgumentException("'and' o 'or' expected after 'type'");
+		    	}
+		    	continue;
+		    } 
+			filter= FilterService.instanceFilter(column, operator, value);
+			if (type.equals("and"))
+				filteredArray = FilterService.runFilterAND(filter, previousArray);
+			else 
+				filteredArray = FilterService.runFilterOR(filter, previousArray);
+		}
+		return filteredArray;
 	
-		
 	}
+}
+

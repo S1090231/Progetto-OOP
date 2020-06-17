@@ -9,7 +9,7 @@ public class Tweet {
      private String lang = "";
      private String source = "";
      private String text = "";
-     private ArrayList<String> userMentions = new ArrayList<String>();
+     private ArrayList<Entity> entity = new ArrayList<Entity>();
      
 
 	
@@ -85,15 +85,18 @@ public class Tweet {
 
 
 
-	public ArrayList<String> getUserMentions() {
-		return userMentions;
+	public ArrayList<Entity> getEntity() {
+		return entity;
 	}
 
 
 
-	public void setUserMentions(ArrayList<String> userMentions) {
-		this.userMentions = userMentions;
+	public void setEntity(ArrayList<Entity> entity) {
+		this.entity = entity;
 	}
+
+
+
 
      
 }
