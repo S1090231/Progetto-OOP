@@ -12,7 +12,7 @@ import it.project.twitter.model.UserMention;
 
 public class JSONParse {
 	
-		public static ArrayList<Tweet> parse() {	
+		public static ArrayList<Tweet> parse()  {	
 				
 			JSONArray timeline = DbClass.JSONdownload();
 		    ArrayList<Tweet> ListaTweets = new ArrayList<Tweet>();
@@ -25,20 +25,23 @@ public class JSONParse {
 				tweet.setText((String) tweetObject.get("text"));
 				tweet.setLang((String) tweetObject.get("lang"));
 				
-				Entity en = new Entity();
-				JSONObject entity = (JSONObject) tweetObject.get("entities");
 				
-				UserMention usrMntn;
-				JSONArray UserMentions = (JSONArray) entity.get("user_mentions");
+					Entity en = new Entity();
+					JSONObject entity= (JSONObject) tweetObject.get("entity");
 					
-				for(int j=0; j<UserMentions.size(); j++) {					
-					usrMntn = new UserMention();
-					JSONObject tweetObject2 = (JSONObject) UserMentions.get(j);
-					usrMntn.setScreenName((String) tweetObject2.get("ScreenName"));
-					usrMntn.setName((String) tweetObject2.get("name"));
-					usrMntn.setId_usermention((long) tweetObject2.get("Id_usermention"));
-					en.setMentions(usrMntn);
+					UserMention usrMntn;
+					JSONArray usrMntn2 =  (JSONArray) entity.get("entity");
+						
+					for(int j=0; j<usrMntn2.size(); j++) {					
+						usrMntn = new UserMention();
+						JSONObject tweetObject2 = (JSONObject) usrMntn2.get(j);
+						usrMntn.setScreenName((String) tweetObject2.get("ScreenName"));
+						usrMntn.setName((String) tweetObject2.get("name"));
+						usrMntn.setId_usermention((long) tweetObject2.get("Id_usermention"));
+						en.setMentions(usrMntn);
 				}
+				
+				
 				
 				ListaTweets.add(tweet);
 			}
